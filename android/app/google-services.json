@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "289445103761",
+    "project_id": "dbtutorial-3bf7e",
+    "storage_bucket": "dbtutorial-3bf7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289445103761:android:2677134484b8a1eef21730",
+        "android_client_info": {
+          "package_name": "com.example.auth_tutorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtvjZ6uQP03J8A3ZEyY9b4uTufOGv_8FA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289445103761:android:5aff6b03c7ea3f56f21730",
+        "android_client_info": {
+          "package_name": "com.example.db_tutorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtvjZ6uQP03J8A3ZEyY9b4uTufOGv_8FA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
