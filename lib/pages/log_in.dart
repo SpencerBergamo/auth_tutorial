@@ -54,6 +54,7 @@ class _LogInState extends State<LogIn> {
                     leadingIcon: Constants.passwordIcon,
                     hintText: "Password",
                     validator: (value) => Validators.validatePassword(value),
+                    obscureText: true,
                     isPassword: true,
                   ),
                   const SizedBox(height: 10),

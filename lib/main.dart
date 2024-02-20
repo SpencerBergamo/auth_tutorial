@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                 ),
               );
             }
-            return const SignUp();
+            return const LogIn();
           },
         ),
         routes: {

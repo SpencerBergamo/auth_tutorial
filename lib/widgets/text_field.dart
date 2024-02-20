@@ -52,8 +52,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       });
                     },
                     icon: widget.obscureText
-                        ? Constants.eyeShow
-                        : Constants.eyeHide,
+                        ? Constants.eyeHide
+                        : Constants.eyeShow,
                   )
                 : null,
           ),
