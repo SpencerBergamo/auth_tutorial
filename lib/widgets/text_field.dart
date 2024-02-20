@@ -11,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword; // password identifiers
   final FaIcon? leadingIcon;
   final IconData? trailingIcon;
+  final border;
   bool obscureText;
 
   CustomTextField({
@@ -23,6 +24,7 @@ class CustomTextField extends StatefulWidget {
     this.leadingIcon,
     this.trailingIcon,
     this.obscureText = false,
+    this.border,
   });
 
   @override
@@ -37,6 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextFormField(
         controller: widget.controller,
+        validator: widget.validator,
         obscureText: widget.obscureText,
         decoration: InputDecoration(
           hintText: widget.hintText,
@@ -57,20 +60,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   )
                 : null,
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            borderSide: BorderSide(
-              color: Color.fromARGB(255, 88, 88, 88),
-            ),
-          ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            borderSide: BorderSide(
-              color: Color.fromARGB(255, 88, 88, 88),
-            ),
-          ),
+
+          // enabledBorder: const OutlineInputBorder(
+          //   borderRadius: BorderRadius.all(Radius.circular(50)),
+          //   borderSide: BorderSide(
+          //     color: Color.fromARGB(255, 88, 88, 88),
+          //   ),
+          // ),
+          // focusedBorder: const OutlineInputBorder(
+          //   borderRadius: BorderRadius.all(Radius.circular(50)),
+          //   borderSide: BorderSide(
+          //     color: Color.fromARGB(255, 88, 88, 88),
+          //   ),
+          // ),
         ),
-        validator: widget.validator,
+        // validator: widget.validator,
       ),
     );
   }

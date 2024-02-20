@@ -14,10 +14,10 @@ class PrimaryBtn extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         child: Container(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(25)),
           child: Center(
             child: Text(
               buttonText,

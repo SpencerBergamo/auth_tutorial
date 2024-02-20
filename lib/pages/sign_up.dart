@@ -72,6 +72,7 @@ class _SignUpState extends State<SignUp> {
                   CustomTextField(
                     controller: _emailController,
                     leadingIcon: Constants.emailIcon,
+                    autoCorrect: false,
                     hintText: "Email",
                     validator: (value) => Validators.validateEmail(value),
                   ),
@@ -79,6 +80,7 @@ class _SignUpState extends State<SignUp> {
                   CustomTextField(
                     controller: _passwordController,
                     leadingIcon: Constants.passwordIcon,
+                    autoCorrect: false,
                     hintText: "Password",
                     validator: (value) => Validators.validatePassword(value),
                     obscureText: true,
@@ -88,6 +90,7 @@ class _SignUpState extends State<SignUp> {
                   CustomTextField(
                     controller: _confirmPasswordController,
                     leadingIcon: Constants.passwordIcon,
+                    autoCorrect: false,
                     hintText: "Confirm Password",
                     validator: (value) => Validators.validatePassword(value),
                     obscureText: true,
@@ -98,17 +101,17 @@ class _SignUpState extends State<SignUp> {
                   PrimaryBtn(
                       buttonText: "Sign up",
                       onPressed: () async {
-                        try {
-                          await AuthRepository().signUpWithEmailAndPassword(
-                              _emailController.text, _passwordController.text);
-                          setState(() {
-                            Navigator.pushReplacementNamed(
-                                context, '/user_home');
-                          });
-                        } catch (e) {
-                          setState(() {
-                            _errorMessage = 'Failed to Create Profile';
-                          });
+                        if (_signUpKey.currentState!.validate()) {
+                          const Center(child: CircularProgressIndicator());
+                          try {
+                            await AuthRepository().signUpWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text);
+                          } catch (e) {
+                            setState(() {
+                              _errorMessage = 'Failed to Create Profile';
+                            });
+                          }
                         }
                       }),
                   const SizedBox(height: 10),

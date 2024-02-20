@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:auth_tutorial/repositories/auth_repo.dart';
 import 'package:auth_tutorial/utils/constants.dart';
 import 'package:auth_tutorial/utils/validators.dart';
@@ -45,13 +47,17 @@ class _LogInState extends State<LogIn> {
                   CustomTextField(
                     controller: _emailController,
                     leadingIcon: Constants.emailIcon,
+                    autoCorrect: false,
                     hintText: "Email",
-                    validator: (value) => Validators.validateEmail(value),
+                    validator: (value) => Validators.validateEmail(
+                      value,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   CustomTextField(
                     controller: _passwordController,
                     leadingIcon: Constants.passwordIcon,
+                    autoCorrect: false,
                     hintText: "Password",
                     validator: (value) => Validators.validatePassword(value),
                     obscureText: true,
@@ -78,14 +84,18 @@ class _LogInState extends State<LogIn> {
                   PrimaryBtn(
                       buttonText: 'Log In',
                       onPressed: () async {
-                        try {
-                          await AuthRepository().signInWithEmailAndPassword(
-                              _emailController.text, _passwordController.text);
-                          login;
-                        } catch (e) {
-                          setState(() {
-                            _errorMessage = 'Invalid email or password';
-                          });
+                        if (!_loginKey.currentState!.validate()) {
+                          const Center(child: CircularProgressIndicator());
+                          try {
+                            await AuthRepository().signInWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text);
+                            // login;
+                          } catch (e) {
+                            setState(() {
+                              _errorMessage = 'Invalid email or password';
+                            });
+                          }
                         }
                       }),
                   const SizedBox(height: 10),
@@ -93,9 +103,9 @@ class _LogInState extends State<LogIn> {
                     onPressed: () async {
                       try {
                         await AuthRepository().signInWithGoogle();
-                        setState(() {
-                          Navigator.pushReplacementNamed(context, '/user_home');
-                        });
+                        // setState(() {
+                        //   Navigator.pushReplacementNamed(context, '/user_home');
+                        // });
                       } catch (e) {
                         setState(() {
                           _errorMessage = 'An error occurred';

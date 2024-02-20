@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Validators {
   // Validate Name
   static String? validateEmail(String? value) {
@@ -9,6 +11,7 @@ class Validators {
     if (!checkEmail.hasMatch(value)) {
       return 'Please enter a valid email';
     }
+    debugPrint('Email is valid');
     return null;
   }
 
