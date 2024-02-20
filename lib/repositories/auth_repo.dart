@@ -52,7 +52,7 @@ class AuthRepository {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  // Finish collecting user profile data
+  // Finish collecting user profile data -- you can implement on a new screen
   Future<String> completeUserProfile({
     required String uid,
     required String email,

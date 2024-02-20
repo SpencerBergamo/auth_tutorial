@@ -18,10 +18,6 @@ class _LogInState extends State<LogIn> {
   String? _errorMessage;
   final _loginKey = GlobalKey<FormState>();
 
-  void login() {
-    Navigator.of(context).pushReplacementNamed('/home');
-  }
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -82,13 +78,11 @@ class _LogInState extends State<LogIn> {
                   PrimaryBtn(
                       buttonText: 'Log In',
                       onPressed: () async {
-                        if (!_loginKey.currentState!.validate()) {
-                          const Center(child: CircularProgressIndicator());
+                        if (_loginKey.currentState!.validate()) {
                           try {
                             await AuthRepository().signInWithEmailAndPassword(
                                 _emailController.text,
                                 _passwordController.text);
-                            // login;
                           } catch (e) {
                             setState(() {
                               _errorMessage = 'Invalid email or password';
@@ -101,9 +95,6 @@ class _LogInState extends State<LogIn> {
                     onPressed: () async {
                       try {
                         await AuthRepository().signInWithGoogle();
-                        // setState(() {
-                        //   Navigator.pushReplacementNamed(context, '/user_home');
-                        // });
                       } catch (e) {
                         setState(() {
                           _errorMessage = 'An error occurred';

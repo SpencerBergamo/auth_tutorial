@@ -102,7 +102,6 @@ class _SignUpState extends State<SignUp> {
                       buttonText: "Sign up",
                       onPressed: () async {
                         if (_signUpKey.currentState!.validate()) {
-                          const Center(child: CircularProgressIndicator());
                           try {
                             await AuthRepository().signUpWithEmailAndPassword(
                                 _emailController.text,
