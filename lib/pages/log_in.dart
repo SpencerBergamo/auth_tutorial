@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:auth_tutorial/repositories/auth_repo.dart';
 import 'package:auth_tutorial/utils/constants.dart';
 import 'package:auth_tutorial/utils/validators.dart';

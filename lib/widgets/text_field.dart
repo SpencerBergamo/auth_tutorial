@@ -60,21 +60,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   )
                 : null,
           ),
-
-          // enabledBorder: const OutlineInputBorder(
-          //   borderRadius: BorderRadius.all(Radius.circular(50)),
-          //   borderSide: BorderSide(
-          //     color: Color.fromARGB(255, 88, 88, 88),
-          //   ),
-          // ),
-          // focusedBorder: const OutlineInputBorder(
-          //   borderRadius: BorderRadius.all(Radius.circular(50)),
-          //   borderSide: BorderSide(
-          //     color: Color.fromARGB(255, 88, 88, 88),
-          //   ),
-          // ),
         ),
-        // validator: widget.validator,
       ),
     );
   }
