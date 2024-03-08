@@ -1,7 +1,8 @@
-import 'package:auth_tutorial/pages/log_in.dart';
-import 'package:auth_tutorial/pages/sign_up.dart';
-import 'package:auth_tutorial/pages/user_home.dart';
-import 'package:auth_tutorial/utils/user_provider.dart';
+import 'package:auth_tutorial/pages/auth/load_profile.dart';
+import 'package:auth_tutorial/pages/auth/log_in.dart';
+import 'package:auth_tutorial/pages/auth/sign_up.dart';
+import 'package:auth_tutorial/pages/user_screens/user_home.dart';
+import 'package:auth_tutorial/data/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,24 +35,26 @@ class MyApp extends StatelessWidget {
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.active) {
-              if (snapshot.hasData) {
-                return const UserHome();
-              } else if (snapshot.hasError) {
+            switch (snapshot.connectionState) {
+              case (ConnectionState.active):
+                if (snapshot.hasData) {
+                  return const LoadProfile();
+                } else {
+                  return const LogIn();
+                }
+              case (ConnectionState.waiting):
                 return const Scaffold(
                   body: Center(
-                    child: Text("Something went wrong"),
+                    child: CircularProgressIndicator(),
                   ),
                 );
-              }
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              default:
+                return const Scaffold(
+                  body: Center(
+                    child: Icon(Icons.camera, size: 100),
+                  ),
+                );
             }
-            return const LogIn();
           },
         ),
         routes: {

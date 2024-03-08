@@ -43,6 +43,7 @@ dependencies:
   google_sign_in:
   image_picker:
   font_awesome_flutter:
+  rounded_loading_button:
 
 dev_dependencies:
   flutter_test:

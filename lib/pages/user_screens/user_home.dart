@@ -23,8 +23,15 @@ class _UserHomeState extends State<UserHome> {
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Welcome to the User Home Page"),
+      body: const SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Welcome to the User Home"),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -11,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword; // password identifiers
   final FaIcon? leadingIcon;
   final IconData? trailingIcon;
+  final TextInputType? keyboardType;
   bool obscureText;
 
   CustomTextField({
@@ -22,6 +23,7 @@ class CustomTextField extends StatefulWidget {
     this.isPassword = false,
     this.leadingIcon,
     this.trailingIcon,
+    this.keyboardType,
     this.obscureText = false,
   });
 
@@ -59,6 +61,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ),
         ),
         validator: widget.validator,
+        keyboardType: widget.keyboardType,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
       ),
     );
   }

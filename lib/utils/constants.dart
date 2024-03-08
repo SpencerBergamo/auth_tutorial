@@ -35,6 +35,10 @@ class Constants {
     FontAwesomeIcons.person,
     size: 20,
   );
+  static const phoneIcon = FaIcon(
+    FontAwesomeIcons.phone,
+    size: 20,
+  );
   static const eyeShow = FaIcon(
     FontAwesomeIcons.eye,
     size: 20,
