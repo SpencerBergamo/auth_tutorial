@@ -1,3 +1,4 @@
+import 'package:auth_tutorial/widgets/circle_avatar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +24,16 @@ class _UserHomeState extends State<UserHome> {
           ),
         ],
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Welcome to the User Home"),
+              Text("Welcome to the User Home",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  )),
+              const UserAvatar(radius: 100.0),
             ],
           ),
         ),
